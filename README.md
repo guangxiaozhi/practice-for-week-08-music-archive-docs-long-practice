@@ -100,31 +100,58 @@ Test this in Postman or by using `fetch` in the browser.
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /artists/:artistId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
-- Body:
+  - Content-Type: application/json
+- Body: Details about artist/1
+``` JSON
+{
+    "name": "Red Hot Chili Peppers",
+    "artistId": 1,
+    "albums": [
+        {
+            "name": "Stadium Arcadium",
+            "albumId": 1,
+            "artistId": 1
+        }
+    ]
+}
+```
 
 ### Add an artist
 
 Request components:
 
-- Method:
-- URL:
+- Method:  POST
+- URL: /artists
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+  {
+      "name": "beetles"
+  }
+```
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "name": "beetles",
+    "artistId": 2
+}
+```
 
 ### Edit a specified artist by artistId
 
