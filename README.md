@@ -350,31 +350,55 @@ Response components:
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /artists/:artistId/songs
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code:200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+[
+    {
+        "name": "Dani California",
+        "lyrics": "song lyrics",
+        "trackNumber": 1,
+        "songId": 1,
+        "albumId": 1
+    }
+]
+```
 
 ### Get all songs of a specific album based on albumId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /albums/:albumId/songs
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+[
+    {
+        "name": "Dani California",
+        "lyrics": "song lyrics",
+        "trackNumber": 1,
+        "songId": 1,
+        "albumId": 1
+    }
+]
+```
 
 ### Get all songs of a specified trackNumber
 
@@ -392,76 +416,151 @@ constrained by for this endpoint?
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: trackNumbers/:trackNumberId/songs
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code:200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+[
+    {
+        "name": "Dani California",
+        "lyrics": "song lyrics",
+        "trackNumber": 1,
+        "songId": 1,
+        "albumId": 1
+    }
+]
+```
+
 
 ### Get a specific song's details based on songId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: songs/:songId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "name": "Dani California",
+    "lyrics": "song lyrics",
+    "trackNumber": 1,
+    "songId": 1,
+    "albumId": 1,
+    "album": {
+        "name": "Stadium Arcadium",
+        "albumId": 1,
+        "artistId": 1
+    },
+    "artist": {
+        "name": "Red Hot Chili Peppers",
+        "artistId": 1
+    }
+}
+```
 
 ### Add a song to a specific album based on albumId
 
 Request components:
 
-- Method:
-- URL:
+- Method: POST
+- URL: /albums/:albumId/songs
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "name": "test song",
+    "lyrics": "song lyrics",
+    "trackNumber": 2
+}
+```
 
 Response components:
 
-- Status code:
+- Status code: 201
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "name": "test song",
+    "lyrics": "song lyrics",
+    "trackNumber": 2,
+    "songId": 3,
+    "albumId": 1
+}
+```
 
 ### Edit a specified song by songId
 
 Request components:
 
-- Method:
-- URL:
+- Method: PUT/PATCH
+- URL: songs/songId
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "name": "almost done",
+    "lyrics": "test lyrics 2",
+    "trackNumber": 100
+}
+```
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "name": "almost done",
+    "lyrics": "test lyrics 2",
+    "trackNumber": 100,
+    "songId": 1,
+    "albumId": 1,
+    "updatedAt": "2022-11-18T00:36:46.984Z"
+}
+```
 
 ### Delete a specified song by songId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: DELETE
+- URL: songs/songId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "message": "Sucessfully deleted"
+}
+```
 
 [http://localhost:5000]: http://localhost:5000
 [starter]: https://github.com/appacademy/practice-for-week-08-music-archive-docs-long-practice# practice-for-week-08-music-archive-docs-long-practice
