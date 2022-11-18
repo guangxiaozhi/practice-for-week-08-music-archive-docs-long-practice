@@ -142,7 +142,7 @@ Request components:
 
 Response components:
 
-- Status code: 200
+- Status code: 201
 - Headers:
   - Content-Type: application/json
 - Body:
@@ -157,106 +157,194 @@ Response components:
 
 Request components:
 
-- Method:
-- URL:
+- Method: PUT/PATCH
+- URL: artists/:artistId
 - Headers:
+  - Content-Type: application/json
 - Body:
+``` json
+{
+    "name" : "New Name"
+}
+```
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+``` json
+{
+    "name": "New Name",
+    "artistId": 1,
+    "updatedAt": "2022-11-17T23:41:35.559Z"
+}
+```
 
 ### Delete a specified artist by artistId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: DELETE
+- URL: /artists/:artistId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "message": "Sucessfully deleted"
+}
+```
 
 ### Get all albums of a specific artist based on artistId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /artists/:artistId/albums
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+``` json
+[
+  {
+    "name":"Stadium Arcadium",
+    "albumId":1,
+    "artistId":1
+  }
+]
+```
 
 ### Get a specific album's details based on albumId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: GET
+- URL: /albums/:albumId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+``` json
+{
+    "name": "Stadium Arcadium",
+    "albumId": 1,
+    "artistId": 1,
+    "artist": {
+        "name": "Red Hot Chili Peppers",
+        "artistId": 1
+    },
+    "songs": [
+        {
+            "name": "Dani California",
+            "lyrics": "Song Lyrics",
+            "trackNumber": 1,
+            "songId": 1,
+            "createdAt": "2022-11-17T23:46:59.000Z",
+            "updatedAt": "2022-11-17T23:46:59.000Z",
+            "albumId": 1
+        }
+    ]
+}
+```
 
 ### Add an album to a specific artist based on artistId
 
 Request components:
 
-- Method:
-- URL:
+- Method: POST
+- URL: /artists/:artistId/albums
 - Headers:
+  - Content-Type: application/json
 - Body:
+``` json
+{
+    "name" : "test album"
+}
+```
 
 Response components:
 
-- Status code:
+- Status code: 201
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "name": "test album",
+    "albumId": 2,
+    "artistId": 1
+}
+```
 
 ### Edit a specified album by albumId
 
 Request components:
 
-- Method:
-- URL:
+- Method: PUT/PATCH
+- URL: /albums/:albumId
 - Headers:
+  - Content-Type: application/json
 - Body:
+``` json
+{
+    "name" : "album 2"
+}
+```
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "name": "album 2",
+    "albumId": 2,
+    "artistId": 1,
+    "updatedAt": "2022-11-18T00:08:15.560Z"
+}
+```
 
 ### Delete a specified album by albumId
 
 Request components:
 
-- Method:
-- URL:
-- Headers:
-- Body:
+- Method: DELETE
+- URL: /albums/:albumId
+- Headers: none
+- Body: none
 
 Response components:
 
-- Status code:
+- Status code: 200
 - Headers:
+  - Content-Type: application/json
 - Body:
+```json
+{
+    "message": "Sucessfully deleted"
+}
+```
 
 ### Get all songs of a specific artist based on artistId
 
